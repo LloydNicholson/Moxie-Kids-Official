@@ -1,0 +1,40 @@
+.aligncenteruppercase {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.moxie-footer {
+  background: rgb(0, 200, 255);
+  color: white;
+}
+
+#header-with-info {
+  margin-bottom: 0;
+}
+
+.link-on-page {
+  text-decoration: none;
+}
+
+.navbar-custom {
+  background-color: white !important;
+  color: black !important;
+}
+
+@media screen and (min-width: 782px) {
+  .half-size {
+    width: 50%;
+    float: right;
+  }
+}
+
+.product-description {
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 782px) {
+  .left-image {
+    width: 300px;
+    float: left;
+  }
+}
