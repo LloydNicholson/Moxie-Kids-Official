@@ -18,3 +18,53 @@ function wp_enqueue_moxie_scripts()
 }
 
 add_action('wp_enqueue_scripts', 'wp_enqueue_moxie_scripts');
+
+function console_log($output, $with_script_tags = true)
+{
+    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
+        ');';
+    if ($with_script_tags) {
+        $js_code = '<script>' . $js_code . '</script>';
+    }
+    echo $js_code;
+}
+
+function set_product_variation_id($variations_json)
+{
+?>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            let siblingSelect = jQuery("#pa_add-sibling");
+            let phpAvailableVars = <?php echo $variations_json; ?>;
+            let input = jQuery(".variation_id");
+            let selectedVariationId = 0;
+
+            siblingSelect.change(function() {
+                selectedVariationId = phpAvailableVars[parseInt(siblingSelect.val())].variation_id;
+                console.log('phpAvailableVar :>> ', selectedVariationId);
+                input.val(selectedVariationId);
+            });
+        });
+    </script>
+<?php
+}
+
+function set_subscription_variation_id($variations_json)
+{
+?>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            let siblingSelect = jQuery("#add-sibling");
+            let phpAvailableVars = <?php echo $variations_json; ?>;
+            let input = jQuery(".variation_id");
+            let selectedVariationId = 0;
+
+            siblingSelect.change(function() {
+                selectedVariationId = phpAvailableVars[parseInt(siblingSelect.val())].variation_id;
+                console.log('phpAvailableVar :>> ', selectedVariationId);
+                input.val(selectedVariationId);
+            });
+        });
+    </script>
+<?php
+}

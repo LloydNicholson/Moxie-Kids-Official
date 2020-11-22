@@ -18,19 +18,9 @@
 
 defined('ABSPATH') || exit;
 
-function console_log($output, $with_script_tags = true)
-{
-    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
-        ');';
-    if ($with_script_tags) {
-        $js_code = '<script>' . $js_code . '</script>';
-    }
-    echo $js_code;
-}
-
 global $product;
 
-$attribute_keys  = array_keys($attributes);
+$attribute_keys = array_keys($attributes);
 $variations_json = wp_json_encode($available_variations);
 $variations_attr = function_exists('wc_esc_json') ? wc_esc_json($variations_json) : _wp_specialchars($variations_json, ENT_QUOTES, 'UTF-8', true);
 
@@ -96,3 +86,5 @@ do_action('woocommerce_before_add_to_cart_form'); ?>
 
 <?php
 do_action('woocommerce_after_add_to_cart_form');
+
+set_product_variation_id($variations_json);
