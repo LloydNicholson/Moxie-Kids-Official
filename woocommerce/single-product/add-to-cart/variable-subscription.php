@@ -103,3 +103,4 @@ do_action('woocommerce_before_add_to_cart_form'); ?>
 do_action('woocommerce_after_add_to_cart_form');
 
 set_subscription_variation_id($variations_json);
+set_product_variation_id($variations_json);

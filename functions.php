@@ -34,14 +34,14 @@ function set_product_variation_id($variations_json)
 ?>
     <script type="text/javascript">
         jQuery(document).ready(function() {
-            let siblingSelect = jQuery("#pa_add-sibling");
             let phpAvailableVars = <?php echo $variations_json; ?>;
+            let siblingSelect = jQuery("#pa_add-sibling");
             let input = jQuery(".variation_id");
             let selectedVariationId = 0;
 
             siblingSelect.change(function() {
                 selectedVariationId = phpAvailableVars[parseInt(siblingSelect.val())].variation_id;
-                console.log('phpAvailableVar :>> ', selectedVariationId);
+                console.log('variationId :>> ', selectedVariationId);
                 input.val(selectedVariationId);
             });
         });
@@ -54,14 +54,14 @@ function set_subscription_variation_id($variations_json)
 ?>
     <script type="text/javascript">
         jQuery(document).ready(function() {
-            let siblingSelect = jQuery("#add-sibling");
             let phpAvailableVars = <?php echo $variations_json; ?>;
+            let siblingSelect = jQuery("#add-sibling");
             let input = jQuery(".variation_id");
             let selectedVariationId = 0;
 
             siblingSelect.change(function() {
                 selectedVariationId = phpAvailableVars[parseInt(siblingSelect.val())].variation_id;
-                console.log('phpAvailableVar :>> ', selectedVariationId);
+                console.log('variationId :>> ', selectedVariationId);
                 input.val(selectedVariationId);
             });
         });
