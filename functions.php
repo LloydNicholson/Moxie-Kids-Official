@@ -35,12 +35,14 @@ function set_product_variation_id($variations_json)
     <script type="text/javascript">
         jQuery(document).ready(function() {
             let phpAvailableVars = <?php echo $variations_json; ?>;
+            phpAvailableVars.sort((a, b) => parseInt(a.attributes['attribute_pa_add-sibling']) - parseInt(b.attributes['attribute_pa_add-sibling']));
             let siblingSelect = jQuery("#pa_add-sibling");
             let input = jQuery(".variation_id");
-            let selectedVariationId = 0;
+            input.val(phpAvailableVars[0].variation_id);
+            console.log('input :>> ', input);
 
             siblingSelect.change(function() {
-                selectedVariationId = phpAvailableVars[parseInt(siblingSelect.val())].variation_id;
+                let selectedVariationId = phpAvailableVars[parseInt(siblingSelect.val())].variation_id;
                 console.log('variationId :>> ', selectedVariationId);
                 input.val(selectedVariationId);
             });
@@ -55,10 +57,13 @@ function set_subscription_variation_id($variations_json)
     <script type="text/javascript">
         jQuery(document).ready(function() {
             let phpAvailableVars = <?php echo $variations_json; ?>;
+            phpAvailableVars.sort((a, b) => parseInt(a.attributes['attribute_pa_add-sibling']) - parseInt(b.attributes['attribute_pa_add-sibling']));
             let siblingSelect = jQuery("#add-sibling");
             let input = jQuery(".variation_id");
-            let selectedVariationId = 0;
+            input.val(phpAvailableVars[0].variation_id);
+            console.log('input :>> ', input);
 
+            console.log('php vars', phpAvailableVars);
             siblingSelect.change(function() {
                 selectedVariationId = phpAvailableVars[parseInt(siblingSelect.val())].variation_id;
                 console.log('variationId :>> ', selectedVariationId);
